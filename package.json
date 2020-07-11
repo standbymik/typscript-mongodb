@@ -23,7 +23,8 @@
   },
   "scripts": {
     "dev": " ts-node src/app.ts",
-    "standbymik": "nodemon",
+    "development": "NODE_ENV=development nodemon",
+    "production": "NODE_ENV=production nodemon",
     "start": "ts-node dist/app.js",
     "build": "tsc -p ."
   },

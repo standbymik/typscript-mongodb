@@ -1,6 +1,5 @@
-import mongoose, { Document } from 'mongoose'
 
-export interface IForum extends Document {
+export interface IForum {
     title: string,
     name: string,
     content: string

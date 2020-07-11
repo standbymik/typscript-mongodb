@@ -3,6 +3,7 @@ import bodyParser from 'body-parser'
 import _ from 'lodash'
 import config from 'config'
 import MongoClient from './mongoClient'
+import { IForum } from './interfaces/forum'
 
 const app: Application = express()
 app.use(bodyParser.json())
@@ -11,6 +12,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.get('/get_forum', (req: Request, res: Response) => {
   return MongoClient(async (db: any) => {
     const x: [] = await db.collection('forum').find().toArray()
+    
+    console.log(config.get('db'))
     res.json(x)
   })
 })
@@ -40,7 +43,7 @@ app.get('/', (req: Request, res: Response) => {
 
   res.json({ data: n, query: req.query, params: req.params })
 })
-const PORT = config.get('db.port')
+const PORT = 4000
 app.listen(PORT, () => {
   console.log(`server is running on PORT ${PORT}`)
 })
